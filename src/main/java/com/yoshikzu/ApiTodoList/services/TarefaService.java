@@ -13,7 +13,7 @@ public class TarefaService {
     @Autowired
     private TarefaRepository tarefaRepository;
 
-    public Tarefa salvar(Tarefa tarefa){
+    public Tarefa incluir(Tarefa tarefa){
         return tarefaRepository.save(tarefa);
     }
 
@@ -54,7 +54,7 @@ public class TarefaService {
 
     //Método que retornará uma tarefa de acordo com o id passado como parametro
     //Caso não encontre será lançada uma exceção com a descrição que a tarefa não encontrada no sistema
-    private Tarefa getTarefa(Long id){
+    public Tarefa getTarefa(Long id){
         var tarefaEncontrada = tarefaRepository.findById(id).orElse(null);
         if(tarefaEncontrada == null){
             throw new RuntimeException("Tarefa (id: " +  id + ") não encontrada no sistema!");
