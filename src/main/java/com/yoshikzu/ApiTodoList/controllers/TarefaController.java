@@ -44,13 +44,13 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DadosListaTarefa>> listar(@PageableDefault(size=10,sort={"data"}) Pageable page){
+    public ResponseEntity<Page<DadosListaTarefa>> listar(@PageableDefault(size=10) Pageable page){
         return ResponseEntity.ok(tarefaService.listarTodasTarefas(page).map(DadosListaTarefa::new));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteTask(@PathVariable Long id){
+    public ResponseEntity excluirTarefa(@PathVariable Long id){
         tarefaService.excluir(id);
         return ResponseEntity.noContent().build();
     }
