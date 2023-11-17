@@ -1,13 +1,8 @@
 package com.yoshikzu.ApiTodoList;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApiTodoListApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
 
 }

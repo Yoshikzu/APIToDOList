@@ -44,7 +44,6 @@ public class TarefaService {
     }
 
     public Page<Tarefa> listarTodasTarefas(Pageable page){
-        System.out.println("Listando");
         return tarefaRepository.findAll(page);
     }
 

@@ -27,6 +27,20 @@ public class Tarefa implements Serializable {
     private boolean enviarNotificacaoPorEmail;
     private String email;
 
+    public Tarefa(){
+    }
+
+    public Tarefa(Long id, String nome, String descricao, LocalDateTime date, boolean concluido, Prioridade prioridade, boolean enviarNotificacaoPorEmail, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.date = date;
+        this.concluido = concluido;
+        this.prioridade = prioridade;
+        this.enviarNotificacaoPorEmail = enviarNotificacaoPorEmail;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
