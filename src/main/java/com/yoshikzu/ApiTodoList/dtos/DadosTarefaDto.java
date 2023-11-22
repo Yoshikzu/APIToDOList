@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public record DadosTarefaDto(@NotBlank String nome,
                              String descricao,
-                             LocalDateTime data,
+                             LocalDateTime date,
                              boolean concluido,
                              Prioridade prioridade,
                              boolean enviarNotificacaoPorEmail,
