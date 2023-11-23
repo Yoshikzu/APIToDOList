@@ -27,7 +27,7 @@ public class EmailService {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(tarefa.getEmail());
             message.setSubject("ToDOList - Lembrete " + tarefa.getNome());
-            message.setText(tarefa.getDescricao() + tarefa.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
+            message.setText(tarefa.getDescricao() + " - " + tarefa.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
             emailSender.send(message);
         }catch (MailException e){
             System.out.println(e.getMessage());

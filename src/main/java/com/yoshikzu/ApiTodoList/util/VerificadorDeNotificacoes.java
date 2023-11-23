@@ -8,7 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +34,8 @@ public class VerificadorDeNotificacoes {
         for(Tarefa tarefa: listaTarefas){
             System.out.println(tarefa.getNome());
             if(tarefa.isEnviarNotificacaoPorEmail() && tarefa.getDate() != null){
-                if(tarefa.getDate().getYear()== LocalDateTime.now().getYear() &&
-                        tarefa.getDate().getMonth() == LocalDateTime.now().getMonth() &&
-                        tarefa.getDate().getDayOfYear() == LocalDateTime.now().getDayOfYear())  {
+                if(tarefa.getDate().toLocalDate().isEqual(LocalDate.now()) &&
+                   LocalTime.now().getHour() ==tarefa.getDate().toLocalTime().minusHours(1).getHour())
                     emailService.sendEmail(tarefa);
                 }
             }
