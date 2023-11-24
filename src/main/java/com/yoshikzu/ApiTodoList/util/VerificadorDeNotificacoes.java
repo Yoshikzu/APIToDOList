@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class VerificadorDeNotificacoes {
             System.out.println(tarefa.getNome());
             if(tarefa.isEnviarNotificacaoPorEmail() && tarefa.getDate() != null){
                 if(tarefa.getDate().toLocalDate().isEqual(LocalDate.now()) &&
-                   LocalTime.now().getHour() ==tarefa.getDate().toLocalTime().minusHours(1).getHour())
-                    emailService.sendEmail(tarefa);
+                   LocalTime.now().getHour() ==tarefa.getDate().toLocalTime().minusHours(1).getHour()){
+                    emailService.sendEmail(tarefa.getEmail(), "APP TODOList - Lembrete " + tarefa.getNome(), tarefa.getNome() + "\n" + tarefa.getDescricao() + "\n " + tarefa.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
                 }
             }
         }
