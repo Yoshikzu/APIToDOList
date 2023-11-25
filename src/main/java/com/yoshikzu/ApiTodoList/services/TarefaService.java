@@ -1,5 +1,6 @@
 package com.yoshikzu.ApiTodoList.services;
 
+import com.yoshikzu.ApiTodoList.exceptions.TarefaNaoEncontrada;
 import com.yoshikzu.ApiTodoList.models.Tarefa;
 import com.yoshikzu.ApiTodoList.repositories.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class TarefaService {
@@ -60,7 +60,7 @@ public class TarefaService {
     public Tarefa getTarefa(Long id){
         var tarefaEncontrada = tarefaRepository.findById(id).orElse(null);
         if(tarefaEncontrada == null){
-            throw new RuntimeException("Tarefa (id: " +  id + ") não encontrada no sistema!");
+            throw new TarefaNaoEncontrada(id);
         }
         return tarefaEncontrada;
     }
