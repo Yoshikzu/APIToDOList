@@ -9,11 +9,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
+
 
 @Component
 @EnableScheduling
@@ -33,7 +32,6 @@ public class VerificadorDeNotificacoes {
         ArrayList<Tarefa> listaTarefas = tarefaService.listarTodasTarefasNaoConcluidasComMarcacaodeNotificar();
 
         for(Tarefa tarefa: listaTarefas){
-            System.out.println(tarefa.getNome());
             if(tarefa.isEnviarNotificacaoPorEmail() && tarefa.getDate() != null){
                 if(tarefa.getDate().toLocalDate().isEqual(LocalDate.now()) &&
                    LocalTime.now().getHour() ==tarefa.getDate().toLocalTime().minusHours(1).getHour()){
