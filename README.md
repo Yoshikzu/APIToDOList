@@ -25,6 +25,4 @@ Foi implementado os endpoints da API para inclusão, alteração, exclusão e a 
 
 Criado também a funcionalidade que será executada a cada uma hora (através da anotação @EnableScheduling), onde o sistema irá verificar se existe uma tarefa para ser feita no mesmo dia e uma hora antes, caso encontre e tenha a marcação de enviar a notificação por email será enviada um email com nome da tarefa e horário como lembrete
 
-=> Foi criado a documentação dos endpoints através do Swagger
-=> Criado Classe para testar os endpoints através do JUnit, porém utilizado com banco de dados em memória (H2)
-=> Foi criado as classes
+Foi criado a documentação dos endpoints através do Swagger. Criado Classe para testar os endpoints através do JUnit, porém utilizado com banco de dados em memória (H2)
